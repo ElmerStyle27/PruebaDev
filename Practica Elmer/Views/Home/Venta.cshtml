@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Venta";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+<body>
+     <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mt-3">
+                <h1>Venta</h1>
+            </div>
+        </div>
+    </div>
+    <div id="modVenta" class="ms-3">
+        <div class="row ms-3 mb-4">
+            <label for="exampleDataList" class="form-label">{{titulo}}</label>
+            <div class="col-6">
+
+                <select class="form-select" aria-label="Default select example" v-model="sucursalSelect" v-on:change="CambiarSucursal()">
+                    <option v-for="(item,index) in listadoSucursales" :value="item.id">{{item.nombre}}</option>
+                </select>
+
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div v-for="(item,index) in listadoProductos.relProductoSucursals" class="card col-6 ms-3 m-3" style="width: 20rem;">
+                <div class="card-body">
+                    <img src="https://emprendepyme.net/wp-content/uploads/2018/02/cualidades-producto-1200x741.jpg" class="card-img-top" alt="...">
+                    <h5 class="card-title">{{item.producto.nombre}}</h5>
+                    <p class="card-text">$ {{item.precioUnitario}}</p>
+                    <a v-on:click="AgregarCarrito(item.producto.id, item.precioUnitario)" class="btn btn-danger">Añadir a Carrito</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center mx-auto">
+            <button v-on:click="ComprarCarrito()" type="button" class="btn btn-primary btn-lg mx-auto">Comprar</button>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="~/js/venta.js"></script>
+</body>
+</html>
