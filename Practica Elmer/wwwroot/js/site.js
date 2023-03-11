@@ -16,7 +16,7 @@
 
             let sucursalId = parseInt(localStorage.getItem('SucursalId'));
 
-            if (sucursalId != null || sucursalId != 0) {
+            if (!!sucursalId) {
                 this.sucursalSelect = sucursalId;
             }
             else {
